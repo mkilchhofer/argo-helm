@@ -33,15 +33,21 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      # Optional step if GPG signing is used
+      # The GitHub repository secret `GPG_PRIVATE_KEY` contains the private key
+      # in ASCII-armored format. To export a (new) key, run this command:
+      # `gpg --armor --export-secret-key <my key>`
       - name: Prepare GPG key
         run: |
           IFS=""
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --dearmor > $HOME/secring.gpg
-          echo "${{ secrets.GPG_PASSPHRASE }}" > $HOME/passphrase.txt
+          echo "$GPG_PRIVATE_KEY" | gpg --dearmor > $HOME/secring.gpg
+          echo "$GPG_PASSPHRASE" > $HOME/passphrase.txt
 
-          # echo "CR_KEYRING=$HOME/secring.gpg" >> "$GITHUB_ENV"
-          # echo "CR_PASSPHRASE_FILE=$HOME/passphrase.txt" >> "$GITHUB_ENV"
+          # Tell chart-releaser-action where to find the key and its passphrase
+          echo "CR_KEYRING=$HOME/secring.gpg" >> "$GITHUB_ENV"
+          echo "CR_PASSPHRASE_FILE=$HOME/passphrase.txt" >> "$GITHUB_ENV"
+        env:
+          GPG_PRIVATE_KEY: "${{ secrets.GPG_PRIVATE_KEY }}"
+          GPG_PASSPHRASE: "${{ secrets.GPG_PASSPHRASE }}"
 
       ## This is required to consider the old Circle-CI Index and to stay compatible with all the old releases.
       - name: Fetch current Chart Index
