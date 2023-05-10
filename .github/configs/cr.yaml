@@ -3,4 +3,4 @@ index-path: "./index.yaml"
 # Set to true for GPG signing
 sign: true
 # UID of the GPG key to use
-key: Unknown
+key: Argo Helm maintainers
