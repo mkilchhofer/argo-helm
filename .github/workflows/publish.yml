@@ -34,22 +34,14 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       # Optional step if GPG signing is used
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@72b6676b71ab476b77e676928516f6982eef7a41 # v5.3.0
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-
-      # The GnuPG v2 store your secret keyring using a new format `kbx` on
-      # the default location  `~/.gnupg/pubring.kbx`. Please use the following command
-      # to convert your keyring to the legacy gpg format:
-      # Ref: https://helm.sh/docs/topics/provenance/
-      - name: Export GPG key to legacy format
-        env:
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Prepare GPG key
         run: |
-          gpg --export > ~/.gnupg/pubring.gpg
-          gpg --export-secret-keys --passphrase $GPG_PASSPHRASE --pinentry-mode loopback > ~/.gnupg/secring.gpg
+          IFS=""
+          echo $GPG_PRIVATE_KEY | gpg --dearmor > ~/secring.gpg
+          echo $GPG_PASSPHRASE > ~/passphrase.txt
+        env:
+          GPG_PRIVATE_KEY: "${{ secrets.GPG_PRIVATE_KEY }}"
+          GPG_PASSPHRASE: "${{ secrets.GPG_PASSPHRASE }}"
 
       ## This is required to consider the old Circle-CI Index and to stay compatible with all the old releases.
       - name: Fetch current Chart Index
