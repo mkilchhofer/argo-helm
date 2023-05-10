@@ -4,5 +4,5 @@ index-path: "./index.yaml"
 sign: true
 # UID of the GPG key to use
 key: Argo Helm maintainers
-# keyring: ~/secring.gpg
-# passphrase-file: ~/passphrase.txt
+keyring: $HOME/secring.gpg
+passphrase-file: $HOME/passphrase.txt
