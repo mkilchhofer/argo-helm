@@ -33,11 +33,6 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: Create legacy GPG store files
-        run: |
-          mkdir ~/.gnupg
-          touch ~/.gnupg/pubring.gpg
-
       # Optional step if GPG signing is used
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@72b6676b71ab476b77e676928516f6982eef7a41 # v5.3.0
@@ -49,9 +44,9 @@ jobs:
       # the default location  `~/.gnupg/pubring.kbx`. Please use the following command
       # to convert your keyring to the legacy gpg format:
       # Ref: https://helm.sh/docs/topics/provenance/
-      # - name: Export GPG key to legacy format
-      #   run: |
-      #     gpg --export > ~/.gnupg/pubring.gpg
+      - name: Export GPG key to legacy format
+        run: |
+          gpg --export > ~/.gnupg/pubring.gpg
 
       ## This is required to consider the old Circle-CI Index and to stay compatible with all the old releases.
       - name: Fetch current Chart Index
