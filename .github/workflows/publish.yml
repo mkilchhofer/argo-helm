@@ -45,8 +45,11 @@ jobs:
       # to convert your keyring to the legacy gpg format:
       # Ref: https://helm.sh/docs/topics/provenance/
       - name: Export GPG key to legacy format
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
           gpg --export > ~/.gnupg/pubring.gpg
+          gpg --export-secret-keys --passphrase $GPG_PASSPHRASE --pinentry-mode loopback > ~/.gnupg/secring.gpg
 
       ## This is required to consider the old Circle-CI Index and to stay compatible with all the old releases.
       - name: Fetch current Chart Index
