@@ -64,7 +64,10 @@
   ],
   "packageRules": [
     {
-      "matchDatasources": ["helm"],
+      "matchDatasources": [
+        "helm",
+        "github-releases"
+      ],
       "postUpgradeTasks": {
         "commands": [
           "./scripts/renovate-bump-version.sh {{depName}}"
