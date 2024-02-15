@@ -64,6 +64,15 @@
   ],
   "packageRules": [
     {
+      "matchDatasources": ["helm"],
+      "postUpgradeTasks": {
+        "commands": [
+          "./scripts/renovate-bump-version.sh {{depName}}"
+        ],
+        "executionMode": "update"
+      }
+    },
+    {
       "matchPackagePatterns": ["argoproj/argo-workflows"],
       "commitMessagePrefix": "chore(argo-workflows):"
     },
