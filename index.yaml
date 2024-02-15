@@ -1588,6 +1588,41 @@ entries:
   argo-cd:
   - annotations:
       artifacthub.io/changes: |
+        - kind: changed
+          description: refresh from upstream
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.9.6
+    created: "2024-02-15T11:21:31.901202764Z"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.23.0
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 553fdd8b6eda19a8d01aeabb53dff78025d63d5a4814f417e57d8e7f46f77aa8
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - https://github.com/mkilchhofer/argo-helm/releases/download/argo-cd-5.53.14/argo-cd-5.53.14.tgz
+    version: 5.53.14
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Enable to customize Service type of applicationset-controller
     apiVersion: v2
@@ -15635,6 +15670,33 @@ entries:
   argo-events:
   - annotations:
       artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-events to v1.9.0
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v1.9.0
+    created: "2024-02-15T11:21:32.094352203Z"
+    description: A Helm chart for Argo Events, the event-driven workflow automation
+      framework
+    digest: 29b06522deef77ba9c8a3cf48be70c2720e9756a61c9ca6887029e9b95ddcdd2
+    home: https://github.com/argoproj/argo-helm
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
+    keywords:
+    - argoproj
+    - argo-events
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-events
+    sources:
+    - https://github.com/argoproj/argo-events
+    urls:
+    - https://github.com/mkilchhofer/argo-helm/releases/download/argo-events-2.4.2/argo-events-2.4.2.tgz
+    version: 2.4.2
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: Use correct artifacthub kind and get latest chart version to artifacthub
     apiVersion: v2
@@ -17048,6 +17110,32 @@ entries:
   argo-rollouts:
   - annotations:
       artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-rollouts to v1.6.5
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v1.6.5
+    created: "2024-02-15T11:21:32.291681026Z"
+    description: A Helm chart for Argo Rollouts
+    digest: 4e0ba3e537811a78adbaff9ac608e8960046518e389b5a0bcae3c130e4657854
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argoproj.github.io/argo-rollouts/assets/logo.png
+    keywords:
+    - argoproj
+    - argo-rollouts
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-rollouts
+    sources:
+    - https://github.com/argoproj/argo-rollouts
+    urls:
+    - https://github.com/mkilchhofer/argo-helm/releases/download/argo-rollouts-2.34.2/argo-rollouts-2.34.2.tgz
+    version: 2.34.2
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: Allow extraObjects to contain string templates
     apiVersion: v2
@@ -18365,6 +18453,30 @@ entries:
     - argo-rollouts-0.1.0.tgz
     version: 0.1.0
   argo-workflows:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Update argo-workflows documentation links to readthedocs
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.5.4
+    created: "2024-02-15T11:21:32.477041784Z"
+    description: A Helm chart for Argo Workflows
+    digest: 15af0af5f7c3d741f5c5e20b30786d4dc15e53136d930fa3ca8294be066e3ee3
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-workflows
+    sources:
+    - https://github.com/argoproj/argo-workflows
+    type: application
+    urls:
+    - https://github.com/mkilchhofer/argo-helm/releases/download/argo-workflows-0.40.10/argo-workflows-0.40.10.tgz
+    version: 0.40.10
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
@@ -21498,6 +21610,31 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
+          description: move ignoreApplicationDifferences block up a level to fix render
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    created: "2024-02-15T11:21:32.680124767Z"
+    description: A Helm chart for managing additional Argo CD Applications and Projects
+    digest: 4c9efc5fbbadcb1e2e26c81eb6417d43bb41bbc31ae2652a1987672efd3f5fd6
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argocd-apps
+    type: application
+    urls:
+    - https://github.com/mkilchhofer/argo-helm/releases/download/argocd-apps-1.6.1/argocd-apps-1.6.1.tgz
+    version: 1.6.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
           description: Changed the project field of the applicationset from a tpl function to a string.
     apiVersion: v2
     created: "2023-04-27T12:49:29.661559988Z"
@@ -21710,6 +21847,33 @@ entries:
     - https://github.com/argoproj/argo-helm/releases/download/argocd-apps-0.0.1/argocd-apps-0.0.1.tgz
     version: 0.0.1
   argocd-image-updater:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Support extra K8s manifests
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v0.12.2
+    created: "2024-02-15T11:21:32.869132845Z"
+    description: A Helm chart for Argo CD Image Updater, a tool to automatically update
+      the container images of Kubernetes workloads which are managed by Argo CD
+    digest: ee8c3211f8ce4ed24614032a084bd2a8833a9fb51cca268167b468b1c5aa014d
+    home: https://github.com/argoproj-labs/argocd-image-updater
+    icon: https://argocd-image-updater.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argocd-image-updater
+    type: application
+    urls:
+    - https://github.com/mkilchhofer/argo-helm/releases/download/argocd-image-updater-0.9.3/argocd-image-updater-0.9.3.tgz
+    version: 0.9.3
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
@@ -22947,4 +23111,4 @@ entries:
     urls:
     - argocd-notifications-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-10T12:42:01.482011193Z"
+generated: "2024-02-15T11:21:32.871190164Z"
