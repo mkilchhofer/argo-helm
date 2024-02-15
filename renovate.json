@@ -13,7 +13,8 @@
     "**/charts/argo-cd/Chart.yaml",
     "**/charts/argo-events/Chart.yaml",
     "**/charts/argo-rollouts/Chart.yaml",
-    "**/charts/argocd-image-updater/Chart.yaml"
+    "**/charts/argocd-image-updater/Chart.yaml",
+    "**/.github/workflows/renovate.yaml"
   ],
   "regexManagers": [
     {
@@ -60,28 +61,49 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
       "depNameTemplate": "argoproj-labs/argocd-image-updater",
       "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s+.+version: (?<currentValue>.*)"
+      ]
     }
   ],
   "packageRules": [
     {
       "matchPackagePatterns": ["argoproj/argo-workflows"],
-      "commitMessagePrefix": "chore(argo-workflows):"
+      "commitMessagePrefix": "chore(argo-workflows):",
+      "postUpgradeTasks": {
+        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
+      }
     },
     {
       "matchPackagePatterns": ["argoproj/argo-cd"],
-      "commitMessagePrefix": "chore(argo-cd):"
+      "commitMessagePrefix": "chore(argo-cd):",
+      "postUpgradeTasks": {
+        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
+      }
     },
     {
       "matchPackagePatterns": ["argoproj/argo-events"],
-      "commitMessagePrefix": "chore(argo-events):"
+      "commitMessagePrefix": "chore(argo-events):",
+      "postUpgradeTasks": {
+        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
+      }
     },
     {
       "matchPackagePatterns": ["argoproj/argo-rollouts"],
-      "commitMessagePrefix": "chore(argo-rollouts):"
+      "commitMessagePrefix": "chore(argo-rollouts):",
+      "postUpgradeTasks": {
+        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
+      }
     },
     {
       "matchPackagePatterns": ["argoproj-labs/argocd-image-updater"],
-      "commitMessagePrefix": "chore(argocd-image-updater):"
+      "commitMessagePrefix": "chore(argocd-image-updater):",
+      "postUpgradeTasks": {
+        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
+      }
     },
     {
       "matchPackagePatterns": ["redis-ha"],
