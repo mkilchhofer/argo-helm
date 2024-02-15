@@ -29,6 +29,7 @@ jobs:
         uses: renovatebot/github-action@2d90417499f45ff78a09586f7b9874b19817dba3 # v40.1.0
         with:
           configurationFile: .github/configs/renovate-config.js
+          renovate-version: 37.192.1-slim
           token: '${{ steps.get_token.outputs.token }}'
         env:
           LOG_LEVEL: 'debug'
