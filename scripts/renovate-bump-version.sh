@@ -13,11 +13,11 @@ major=$(echo $version | cut -d. -f1)
 minor=$(echo $version | cut -d. -f2)
 patch=$(echo $version | cut -d. -f3)
 patch=$(expr $patch + 1)
-gsed -i "s/^version:.*/version: ${major}.${minor}.${patch}/g" ${parentDir}/Chart.yaml
+sed -i "s/^version:.*/version: ${major}.${minor}.${patch}/g" ${parentDir}/Chart.yaml
 
 # Add a changelog entry
 appVersion=$(grep '^appVersion:' ${parentDir}/Chart.yaml | awk '{print $2}')
-gsed -i -e '/^  artifacthub.io\/changes: |/,$d' ${parentDir}/Chart.yaml
+sed -i -e '/^  artifacthub.io\/changes: |/,$d' ${parentDir}/Chart.yaml
 echo "  artifacthub.io/changes: |" >> ${parentDir}/Chart.yaml
 echo "    - kind: changed" >> ${parentDir}/Chart.yaml
 echo "      description: Bump ${chartName} to ${appVersion}" >> ${parentDir}/Chart.yaml
