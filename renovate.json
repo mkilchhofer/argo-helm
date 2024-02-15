@@ -81,7 +81,13 @@
     },
     {
       "matchPackagePatterns": ["argoproj/argo-cd"],
-      "commitMessagePrefix": "chore(argo-cd):"
+      "commitMessagePrefix": "chore(argo-cd):",
+      "postUpgradeTasks": {
+        "commands": [
+          "./scripts/renovate-bump-version.sh {{depName}}"
+        ],
+        "executionMode": "update"
+      }
     },
     {
       "matchPackagePatterns": ["argoproj/argo-events"],
