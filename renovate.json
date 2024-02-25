@@ -71,36 +71,20 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["argoproj/argo-workflows"],
-      "commitMessagePrefix": "chore(argo-workflows):",
-      "postUpgradeTasks": {
-        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
-      }
-    },
-    {
-      "matchPackagePatterns": ["argoproj/argo-cd"],
-      "commitMessagePrefix": "chore(argo-cd):",
-      "postUpgradeTasks": {
-        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
-      }
-    },
-    {
-      "matchPackagePatterns": ["argoproj/argo-events"],
-      "commitMessagePrefix": "chore(argo-events):",
-      "postUpgradeTasks": {
-        "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
-      }
-    },
-    {
-      "matchPackagePatterns": ["argoproj/argo-rollouts"],
-      "commitMessagePrefix": "chore(argo-rollouts):",
+      "matchPackagePatterns": [
+        "argoproj/argo-workflows",
+        "argoproj/argo-cd",
+        "argoproj/argo-events",
+        "argoproj/argo-rollouts"
+      ],
+      "commitMessagePrefix": "chore({{{replace 'argoproj/' '' depName}}}):",
       "postUpgradeTasks": {
         "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
       }
     },
     {
       "matchPackagePatterns": ["argoproj-labs/argocd-image-updater"],
-      "commitMessagePrefix": "chore(argocd-image-updater):",
+      "commitMessagePrefix": "chore({{{replace 'argoproj-labs/' '' depName}}}):",
       "postUpgradeTasks": {
         "commands": ["./scripts/renovate-bump-version.sh {{depName}}"]
       }
