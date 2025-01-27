@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   renovate:
-    if: github.repository == 'argoproj/argo-helm'
     runs-on: ubuntu-latest
     steps:
       - name: Get token
