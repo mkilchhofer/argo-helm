@@ -18,6 +18,7 @@
     "**/charts/argocd-image-updater/Chart.yaml",
     "**/.github/workflows/renovate.yaml"
   ],
+  "prHourlyLimit": 42,
   "customManagers": [
     {
       "customType": "regex",
